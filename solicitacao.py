@@ -11,6 +11,7 @@ class Solicitacao():
     def __init__(self,descricao,tipo):
         self.descricao = descricao
         self.tipo = tipo
+        self.dataEnvio = datetime.now() #registra a criacao/envio da solicitacao
         
     def notificaPersonal(cliente: Cliente):
         ...
