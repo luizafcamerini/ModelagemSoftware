@@ -1,33 +1,31 @@
+from usuario import Usuario
 from solicitacao import Solicitacao
 from personal import Personal
 from treino import Treino
 from sessao import Sessao
 from programa import Programa
 
-class Cliente():
-    nome:str
-    sobrenome:str
-    id: int # o id pode ser gerado automaticamente, tipo uma hash a partir do nome?
+class Cliente(Usuario):
     personal: Personal
     sessoes:list
     programas: list
     
-    def __init__(self, nome, sobrenome):
-        self.nome = nome
-        self.sobrenome = sobrenome
+    def __init__(self, nome: str, sobrenome: str, id: int) -> None:
+        id = self.__generate_id(nome, sobrenome)
+        super().__init__(id, nome, sobrenome)
+        self.personal = None
+        self.sessoes = []
+        self.programas = []
         # cria o id como uma hash
         # adiciona ele na base de dados
-        self.__registraClienteBanco(self)
+        self.__registraClienteBanco()
     
     def __registraClienteBanco(self):
         #inclui o cliente no banco de dados
         ...
     
-    def getPersonal(self):
+    def getPersonal(self) -> Personal:
         return self.personal
-    
-    def getId(self):
-        return self.id
 
     def setProgramas(self, programas:list):
         self.programas = programas
@@ -53,5 +51,3 @@ class Cliente():
     
     def solicitaModificacaoExercicio(self):
         ...
-    
-    

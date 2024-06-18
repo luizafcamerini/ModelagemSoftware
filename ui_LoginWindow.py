@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainWindow.ui'
+## Form generated from reading UI file 'LoginWindow.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.1
 ##
@@ -17,22 +17,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QGridLayout, QLabel,
     QLineEdit, QPushButton, QRadioButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QVBoxLayout, QWidget)
+    QSpacerItem, QVBoxLayout, QWidget)
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        if not MainWindow.objectName():
-            MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
-        self.gridLayout_3 = QGridLayout(MainWindow)
-        self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.stackedWidget = QStackedWidget(MainWindow)
-        self.stackedWidget.setObjectName(u"stackedWidget")
-        self.page = QWidget()
-        self.page.setObjectName(u"page")
-        self.gridLayoutWidget = QWidget(self.page)
+class Ui_LoginWindow(object):
+    def setupUi(self, LoginWindow):
+        if not LoginWindow.objectName():
+            LoginWindow.setObjectName(u"LoginWindow")
+        LoginWindow.resize(800, 600)
+        self.gridLayoutWidget = QWidget(LoginWindow)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(150, 130, 341, 171))
+        self.gridLayoutWidget.setGeometry(QRect(200, 69, 341, 171))
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -104,29 +98,19 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.loginWidget, 0, 0, 1, 1)
 
-        self.stackedWidget.addWidget(self.page)
-        self.page_3 = QWidget()
-        self.page_3.setObjectName(u"page_3")
-        self.stackedWidget.addWidget(self.page_3)
-        self.page_2 = QWidget()
-        self.page_2.setObjectName(u"page_2")
-        self.stackedWidget.addWidget(self.page_2)
 
-        self.gridLayout_3.addWidget(self.stackedWidget, 0, 0, 1, 1)
+        self.retranslateUi(LoginWindow)
 
-
-        self.retranslateUi(MainWindow)
-
-        QMetaObject.connectSlotsByName(MainWindow)
+        QMetaObject.connectSlotsByName(LoginWindow)
     # setupUi
 
-    def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.personalRadioButton.setText(QCoreApplication.translate("MainWindow", u"Aluno", None))
-        self.alunoRadioButton.setText(QCoreApplication.translate("MainWindow", u"Personal", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Nome do Aplicativo", None))
-        self.cadastroLabel.setText(QCoreApplication.translate("MainWindow", u"Cadastro: ", None))
-        self.senhaLabel.setText(QCoreApplication.translate("MainWindow", u"Senha:", None))
-        self.entrarPushButton.setText(QCoreApplication.translate("MainWindow", u"Entrar", None))
+    def retranslateUi(self, LoginWindow):
+        LoginWindow.setWindowTitle(QCoreApplication.translate("LoginWindow", u"MainWindow", None))
+        self.personalRadioButton.setText(QCoreApplication.translate("LoginWindow", u"Aluno", None))
+        self.alunoRadioButton.setText(QCoreApplication.translate("LoginWindow", u"Personal", None))
+        self.label.setText(QCoreApplication.translate("LoginWindow", u"Nome do Aplicativo", None))
+        self.cadastroLabel.setText(QCoreApplication.translate("LoginWindow", u"Cadastro: ", None))
+        self.senhaLabel.setText(QCoreApplication.translate("LoginWindow", u"Senha:", None))
+        self.entrarPushButton.setText(QCoreApplication.translate("LoginWindow", u"Entrar", None))
     # retranslateUi
 

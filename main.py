@@ -1,11 +1,13 @@
 from MainWindow import MainWindow
-from PySide6 import QtWidgets, QtGui
+from PySide6 import QtWidgets
+
 import sys
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
 
     window = MainWindow()
     window.resize(800, 600)
-    window.show()
 
+    window.show()
+    
     sys.exit(app.exec())
