@@ -1,4 +1,5 @@
 
+from banco import Banco
 from usuario import Usuario
 from cliente import Cliente
 import datetime
@@ -12,6 +13,8 @@ class Personal(Usuario):
             super().__init__(id, nome, sobrenome)
 
     def pesquisaCliente(self, idCliente, nomeCliente, sobrenomeCliente) -> list:
+        bd = Banco.get_instance().get_database()
+        clientes = bd["clientes"]
         if idCliente != None:
             #procura o cliente na base de dados
             ...
@@ -28,7 +31,10 @@ class Personal(Usuario):
         #pesquisa solicitacao na base de dados
         ...
     
-    def criaPrograma(self,cliente:Cliente, estimativaTempo, treinos:list):
+    def criaPrograma(self):
+        #abrir nova ui de criar programa
+        #
+        #preencher dados do programa
         ...
         
     def registraCliente(self, nomeCliente:str, sobrenomeCliente:str)->bool:

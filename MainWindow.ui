@@ -45,14 +45,14 @@
           <item>
            <widget class="QRadioButton" name="personalRadioButton">
             <property name="text">
-             <string>Aluno</string>
+             <string>Personal</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QRadioButton" name="alunoRadioButton">
             <property name="text">
-             <string>Personal</string>
+             <string>Aluno</string>
             </property>
            </widget>
           </item>

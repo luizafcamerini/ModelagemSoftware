@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'MainWindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.1
+## Created by: Qt User Interface Compiler version 6.7.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -122,8 +122,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.personalRadioButton.setText(QCoreApplication.translate("MainWindow", u"Aluno", None))
-        self.alunoRadioButton.setText(QCoreApplication.translate("MainWindow", u"Personal", None))
+        self.personalRadioButton.setText(QCoreApplication.translate("MainWindow", u"Personal", None))
+        self.alunoRadioButton.setText(QCoreApplication.translate("MainWindow", u"Aluno", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Nome do Aplicativo", None))
         self.cadastroLabel.setText(QCoreApplication.translate("MainWindow", u"Cadastro: ", None))
         self.senhaLabel.setText(QCoreApplication.translate("MainWindow", u"Senha:", None))
