@@ -6,11 +6,13 @@ from usuario import Usuario
 
 from PySide6.QtWidgets import QWidget
 from PySide6.QtCore import Signal, Slot
+from pymongo import *
+
 
 class MainWindow(QWidget):
-
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.init_banco()
 
         self.ui = Ui_MainWindow()
         self.personal_ui = PersonalWindow()
@@ -26,6 +28,12 @@ class MainWindow(QWidget):
         self.personal_ui.logout.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
         self.cliente_ui.logout.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
 
+    def init_banco(self):
+        self.m_cliente = MongoClient("localhost", 27017, serverSelectionTimeoutMS=3000)
+        self.bd = self.m_cliente["banco"]
+        # self.colecao.insert_one({"campo1": 42, "campo2": 9001}) # pra inserir
+        # documento = self.colecao.find_one({"campo1": 42}) # pra consultar
+    
     Slot()
     def loginTriggered(self):
         if(self.validaUsuario(self.ui.cadastroLineEdit, self.ui.senhaLineEdit)):
