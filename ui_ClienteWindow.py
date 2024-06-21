@@ -26,28 +26,28 @@ class Ui_ClienteWindow(object):
         if not ClienteWindow.objectName():
             ClienteWindow.setObjectName(u"ClienteWindow")
         ClienteWindow.resize(800, 600)
-        self.pushButton = QPushButton(ClienteWindow)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(610, 10, 80, 24))
+        self.sessao_button = QPushButton(ClienteWindow)
+        self.sessao_button.setObjectName(u"sessao_button")
+        self.sessao_button.setGeometry(QRect(610, 10, 80, 24))
         self.groupBox = QGroupBox(ClienteWindow)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(0, 10, 221, 511))
         self.gridLayout_3 = QGridLayout(self.groupBox)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.listWidget_2 = QListWidget(self.groupBox)
-        self.listWidget_2.setObjectName(u"listWidget_2")
+        self.programa_list = QListWidget(self.groupBox)
+        self.programa_list.setObjectName(u"programa_list")
 
-        self.gridLayout_3.addWidget(self.listWidget_2, 0, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.programa_list, 0, 0, 1, 1)
 
         self.groupBox_2 = QGroupBox(ClienteWindow)
         self.groupBox_2.setObjectName(u"groupBox_2")
         self.groupBox_2.setGeometry(QRect(230, 10, 280, 511))
         self.gridLayout_4 = QGridLayout(self.groupBox_2)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.listWidget_3 = QListWidget(self.groupBox_2)
-        self.listWidget_3.setObjectName(u"listWidget_3")
+        self.exercicios_sessao_list = QListWidget(self.groupBox_2)
+        self.exercicios_sessao_list.setObjectName(u"exercicios_sessao_list")
 
-        self.gridLayout_4.addWidget(self.listWidget_3, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.exercicios_sessao_list, 0, 0, 1, 1)
 
         self.tabWidget = QTabWidget(ClienteWindow)
         self.tabWidget.setObjectName(u"tabWidget")
@@ -67,31 +67,31 @@ class Ui_ClienteWindow(object):
 
         self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
 
-        self.radioButton = QRadioButton(self.frame)
-        self.radioButton.setObjectName(u"radioButton")
+        self.exercicio_radiob = QRadioButton(self.frame)
+        self.exercicio_radiob.setObjectName(u"exercicio_radiob")
 
-        self.gridLayout.addWidget(self.radioButton, 3, 0, 1, 2)
+        self.gridLayout.addWidget(self.exercicio_radiob, 3, 0, 1, 2)
 
-        self.radioButton_2 = QRadioButton(self.frame)
-        self.radioButton_2.setObjectName(u"radioButton_2")
+        self.treino_radiob = QRadioButton(self.frame)
+        self.treino_radiob.setObjectName(u"treino_radiob")
 
-        self.gridLayout.addWidget(self.radioButton_2, 3, 2, 1, 1)
+        self.gridLayout.addWidget(self.treino_radiob, 3, 2, 1, 1)
 
-        self.textEdit = QTextEdit(self.frame)
-        self.textEdit.setObjectName(u"textEdit")
+        self.descricao_text = QTextEdit(self.frame)
+        self.descricao_text.setObjectName(u"descricao_text")
 
-        self.gridLayout.addWidget(self.textEdit, 1, 1, 1, 2)
+        self.gridLayout.addWidget(self.descricao_text, 1, 1, 1, 2)
 
-        self.buttonBox = QDialogButtonBox(self.frame)
-        self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
+        self.solicitacao_button = QDialogButtonBox(self.frame)
+        self.solicitacao_button.setObjectName(u"solicitacao_button")
+        self.solicitacao_button.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
 
-        self.gridLayout.addWidget(self.buttonBox, 4, 2, 1, 1)
+        self.gridLayout.addWidget(self.solicitacao_button, 4, 2, 1, 1)
 
-        self.lineEdit = QLineEdit(self.frame)
-        self.lineEdit.setObjectName(u"lineEdit")
+        self.titulo_text = QLineEdit(self.frame)
+        self.titulo_text.setObjectName(u"titulo_text")
 
-        self.gridLayout.addWidget(self.lineEdit, 0, 1, 1, 2)
+        self.gridLayout.addWidget(self.titulo_text, 0, 1, 1, 2)
 
         self.label = QLabel(self.frame)
         self.label.setObjectName(u"label")
@@ -106,15 +106,15 @@ class Ui_ClienteWindow(object):
         self.tab_2.setObjectName(u"tab_2")
         self.horizontalLayout = QHBoxLayout(self.tab_2)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.listWidget = QListWidget(self.tab_2)
-        self.listWidget.setObjectName(u"listWidget")
+        self.solicitacoes_list = QListWidget(self.tab_2)
+        self.solicitacoes_list.setObjectName(u"solicitacoes_list")
 
-        self.horizontalLayout.addWidget(self.listWidget)
+        self.horizontalLayout.addWidget(self.solicitacoes_list)
 
         self.tabWidget.addTab(self.tab_2, "")
-        self.logoutQPushButton = QPushButton(ClienteWindow)
-        self.logoutQPushButton.setObjectName(u"logoutQPushButton")
-        self.logoutQPushButton.setGeometry(QRect(710, 10, 80, 24))
+        self.logout_button = QPushButton(ClienteWindow)
+        self.logout_button.setObjectName(u"logout_button")
+        self.logout_button.setGeometry(QRect(710, 10, 80, 24))
 
         self.retranslateUi(ClienteWindow)
 
@@ -126,15 +126,15 @@ class Ui_ClienteWindow(object):
 
     def retranslateUi(self, ClienteWindow):
         ClienteWindow.setWindowTitle(QCoreApplication.translate("ClienteWindow", u"MainWindow", None))
-        self.pushButton.setText(QCoreApplication.translate("ClienteWindow", u"Iniciar Sess\u00e3o", None))
+        self.sessao_button.setText(QCoreApplication.translate("ClienteWindow", u"Iniciar Sess\u00e3o", None))
         self.groupBox.setTitle(QCoreApplication.translate("ClienteWindow", u"Meu Programa", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("ClienteWindow", u"Exerc\u00edcios da Sess\u00e3o", None))
         self.label_2.setText(QCoreApplication.translate("ClienteWindow", u"Descri\u00e7\u00e3o:", None))
-        self.radioButton.setText(QCoreApplication.translate("ClienteWindow", u"Alterar exerc\u00edcio", None))
-        self.radioButton_2.setText(QCoreApplication.translate("ClienteWindow", u"Alterar treino", None))
+        self.exercicio_radiob.setText(QCoreApplication.translate("ClienteWindow", u"Alterar exerc\u00edcio", None))
+        self.treino_radiob.setText(QCoreApplication.translate("ClienteWindow", u"Alterar treino", None))
         self.label.setText(QCoreApplication.translate("ClienteWindow", u"T\u00edtulo:", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("ClienteWindow", u"Criar Solicita\u00e7\u00e3o", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("ClienteWindow", u"Minhas Solicita\u00e7\u00f5es", None))
-        self.logoutQPushButton.setText(QCoreApplication.translate("ClienteWindow", u"Logout", None))
+        self.logout_button.setText(QCoreApplication.translate("ClienteWindow", u"Logout", None))
     # retranslateUi
 

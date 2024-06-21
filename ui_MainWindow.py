@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'MainWindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.2
+## Created by: Qt User Interface Compiler version 6.7.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -30,24 +30,23 @@ class Ui_MainWindow(object):
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.gridLayoutWidget = QWidget(self.page)
-        self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(150, 130, 341, 171))
-        self.gridLayout = QGridLayout(self.gridLayoutWidget)
+        self.gridLayout_4 = QGridLayout(self.page)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setContentsMargins(200, 200, 200, 200)
         self.verticalLayout_4 = QVBoxLayout()
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_4.addItem(self.verticalSpacer_3)
 
-        self.personalRadioButton = QRadioButton(self.gridLayoutWidget)
+        self.personalRadioButton = QRadioButton(self.page)
         self.personalRadioButton.setObjectName(u"personalRadioButton")
 
         self.verticalLayout_4.addWidget(self.personalRadioButton)
 
-        self.alunoRadioButton = QRadioButton(self.gridLayoutWidget)
+        self.alunoRadioButton = QRadioButton(self.page)
         self.alunoRadioButton.setObjectName(u"alunoRadioButton")
 
         self.verticalLayout_4.addWidget(self.alunoRadioButton)
@@ -59,7 +58,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addLayout(self.verticalLayout_4, 0, 1, 1, 1)
 
-        self.loginWidget = QWidget(self.gridLayoutWidget)
+        self.loginWidget = QWidget(self.page)
         self.loginWidget.setObjectName(u"loginWidget")
         self.formLayout = QFormLayout(self.loginWidget)
         self.formLayout.setObjectName(u"formLayout")
@@ -103,6 +102,9 @@ class Ui_MainWindow(object):
 
 
         self.gridLayout.addWidget(self.loginWidget, 0, 0, 1, 1)
+
+
+        self.gridLayout_4.addLayout(self.gridLayout, 0, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.page)
         self.page_3 = QWidget()

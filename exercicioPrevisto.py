@@ -1,2 +1,0 @@
-class ExercicioPrevisto():
-    pass

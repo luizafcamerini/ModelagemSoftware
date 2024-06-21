@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="sessao_button">
    <property name="geometry">
     <rect>
      <x>610</x>
@@ -40,7 +40,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
-     <widget class="QListWidget" name="listWidget_2"/>
+     <widget class="QListWidget" name="programa_list"/>
     </item>
    </layout>
   </widget>
@@ -58,7 +58,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout_4">
     <item row="0" column="0">
-     <widget class="QListWidget" name="listWidget_3"/>
+     <widget class="QListWidget" name="exercicios_sessao_list"/>
     </item>
    </layout>
   </widget>
@@ -96,31 +96,31 @@
          </widget>
         </item>
         <item row="3" column="0" colspan="2">
-         <widget class="QRadioButton" name="radioButton">
+         <widget class="QRadioButton" name="exercicio_radiob">
           <property name="text">
            <string>Alterar exercício</string>
           </property>
          </widget>
         </item>
         <item row="3" column="2">
-         <widget class="QRadioButton" name="radioButton_2">
+         <widget class="QRadioButton" name="treino_radiob">
           <property name="text">
            <string>Alterar treino</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1" colspan="2">
-         <widget class="QTextEdit" name="textEdit"/>
+         <widget class="QTextEdit" name="descricao_text"/>
         </item>
         <item row="4" column="2">
-         <widget class="QDialogButtonBox" name="buttonBox">
+         <widget class="QDialogButtonBox" name="solicitacao_button">
           <property name="standardButtons">
            <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
           </property>
          </widget>
         </item>
         <item row="0" column="1" colspan="2">
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="titulo_text"/>
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label">
@@ -140,12 +140,12 @@
     </attribute>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QListWidget" name="listWidget"/>
+      <widget class="QListWidget" name="solicitacoes_list"/>
      </item>
     </layout>
    </widget>
   </widget>
-  <widget class="QPushButton" name="logoutQPushButton">
+  <widget class="QPushButton" name="logout_button">
    <property name="geometry">
     <rect>
      <x>710</x>

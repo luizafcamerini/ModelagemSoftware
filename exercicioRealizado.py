@@ -1,2 +1,0 @@
-class ExercicioRealizado():
-    pass
