@@ -4,7 +4,7 @@ from ui_MainWindow import Ui_MainWindow
 from PersonalWindow import PersonalWindow
 from ClientWindow import ClienteWindow
 from ExercicioDialog import ExercicioDialog
-
+from ProgramaWindow import ProgramaWindow
 
 
 from PySide6.QtWidgets import QWidget, QDialog
@@ -34,6 +34,7 @@ class MainWindow(QWidget):
         self.personal_ui.logout.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
         self.cliente_ui.logout.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
         self.personal_ui.cad_exercicio.connect(self.exercicio_dlg)
+        self.personal_ui.cria_programa.connect(self.programa_dlg)
 
     Slot()
     def loginTriggered(self):
@@ -45,8 +46,13 @@ class MainWindow(QWidget):
     def exercicio_dlg(self, exercicios):
         dlg = ExercicioDialog(self, exercicios)
         if (dlg.exec() == QDialog.Accepted):
-            dlg.get_exercicios_alterados()
+            dlg.salva_alteracoes()
 
+    @Slot(list)
+    def programa_dlg(self, exercicios):
+        dlg = ProgramaWindow(self, exercicios)
+        if (dlg.exec() == QDialog.Accepted):
+            dlg.salva_programa()
 
     def validaUsuario(self, nome, senha, cargo)-> bool:
         # pode ser da classe Usuario

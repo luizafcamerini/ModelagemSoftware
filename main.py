@@ -4,7 +4,7 @@ from PySide6 import QtWidgets
 import sys
 
 def ui_convert():
-    windowNames = ["ClienteWindow", "PersonalWindow", "MainWindow", "ExercicioDialog"]
+    windowNames = ["ClienteWindow", "PersonalWindow", "MainWindow", "ExercicioDialog", "ProgramaWindow"]
     for name in windowNames:
         command1 = f"del ui_{name}.py"
         command2 = f"pyside6-uic {name}.ui -o ui_{name}.py"
