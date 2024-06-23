@@ -12,7 +12,7 @@ class PersonalWindow(QWidget, Banco):
     logout = Signal()
     cad_usuario = Signal()
     conf_treino = Signal()
-    cria_programa = Signal(list)
+    cria_programa = Signal(list, list)
     alt_treino = Signal()
     cad_exercicio = Signal(list)
 
@@ -48,7 +48,8 @@ class PersonalWindow(QWidget, Banco):
     @Slot()
     def criarProgramaClicked(self):
         exercicios = list(self.exercicios_col.find())
-        self.cria_programa.emit(exercicios)
+        clientes = list(self.clientes_col.find())
+        self.cria_programa.emit(exercicios, clientes)
     
     @Slot()
     def alterarTreinoClicked(self):

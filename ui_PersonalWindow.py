@@ -26,13 +26,9 @@ class Ui_PersonalWindow(object):
         PersonalWindow.resize(800, 600)
         self.gridLayout_3 = QGridLayout(PersonalWindow)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_3.addItem(self.horizontalSpacer, 0, 1, 1, 1)
-
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.gridLayout_3.addItem(self.verticalSpacer, 1, 2, 1, 1)
+        self.gridLayout_3.addItem(self.verticalSpacer, 1, 4, 1, 1)
 
         self.groupBox_2 = QGroupBox(PersonalWindow)
         self.groupBox_2.setObjectName(u"groupBox_2")
@@ -67,6 +63,10 @@ class Ui_PersonalWindow(object):
 
         self.gridLayout_3.addWidget(self.groupBox_2, 0, 0, 1, 1)
 
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_3.addItem(self.horizontalSpacer, 0, 1, 1, 1)
+
         self.gridLayout_8 = QGridLayout()
         self.gridLayout_8.setObjectName(u"gridLayout_8")
         self.cadastrar_button = QPushButton(PersonalWindow)
@@ -77,11 +77,6 @@ class Ui_PersonalWindow(object):
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.gridLayout_8.addItem(self.horizontalSpacer_2, 1, 2, 1, 1)
-
-        self.logout_button = QPushButton(PersonalWindow)
-        self.logout_button.setObjectName(u"logout_button")
-
-        self.gridLayout_8.addWidget(self.logout_button, 1, 1, 1, 1)
 
         self.configurar_treino_button = QPushButton(PersonalWindow)
         self.configurar_treino_button.setObjectName(u"configurar_treino_button")
@@ -100,10 +95,6 @@ class Ui_PersonalWindow(object):
 
         self.gridLayout_8.addWidget(self.groupBox, 7, 0, 1, 4)
 
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_8.addItem(self.horizontalSpacer_3, 1, 0, 1, 1)
-
         self.alterar_treino_button = QPushButton(PersonalWindow)
         self.alterar_treino_button.setObjectName(u"alterar_treino_button")
 
@@ -120,7 +111,16 @@ class Ui_PersonalWindow(object):
         self.gridLayout_8.addWidget(self.cad_exercicio_button, 6, 0, 1, 3)
 
 
-        self.gridLayout_3.addLayout(self.gridLayout_8, 0, 2, 1, 1)
+        self.gridLayout_3.addLayout(self.gridLayout_8, 0, 2, 1, 3)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_3.addItem(self.horizontalSpacer_3, 3, 0, 1, 4)
+
+        self.logout_button = QPushButton(PersonalWindow)
+        self.logout_button.setObjectName(u"logout_button")
+
+        self.gridLayout_3.addWidget(self.logout_button, 3, 4, 1, 1)
 
 
         self.retranslateUi(PersonalWindow)
@@ -137,11 +137,11 @@ class Ui_PersonalWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("PersonalWindow", u"Pendentes", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("PersonalWindow", u"Respondidas", None))
         self.cadastrar_button.setText(QCoreApplication.translate("PersonalWindow", u"Cadastrar Usu\u00e1rio", None))
-        self.logout_button.setText(QCoreApplication.translate("PersonalWindow", u"logout", None))
         self.configurar_treino_button.setText(QCoreApplication.translate("PersonalWindow", u"Configurar Treino", None))
         self.groupBox.setTitle(QCoreApplication.translate("PersonalWindow", u"Meus Usu\u00e1rios", None))
         self.alterar_treino_button.setText(QCoreApplication.translate("PersonalWindow", u"Alterar Treino", None))
         self.programa_button.setText(QCoreApplication.translate("PersonalWindow", u"Criar Programa", None))
         self.cad_exercicio_button.setText(QCoreApplication.translate("PersonalWindow", u"Cadastrar Excerc\u00edcio", None))
+        self.logout_button.setText(QCoreApplication.translate("PersonalWindow", u"logout", None))
     # retranslateUi
 

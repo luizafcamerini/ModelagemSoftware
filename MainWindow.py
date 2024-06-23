@@ -42,15 +42,15 @@ class MainWindow(QWidget):
         if(self.validaUsuario(self.ui.cadastroLineEdit.text(), self.ui.senhaLineEdit.text(), tipo)):
             self.ui.stackedWidget.setCurrentIndex(tipo)
 
-    @Slot(list)
+    @Slot(list, list)
     def exercicio_dlg(self, exercicios):
         dlg = ExercicioDialog(self, exercicios)
         if (dlg.exec() == QDialog.Accepted):
             dlg.salva_alteracoes()
 
-    @Slot(list)
-    def programa_dlg(self, exercicios):
-        dlg = ProgramaWindow(self, exercicios)
+    @Slot(list, list)
+    def programa_dlg(self, exercicios, clientes):
+        dlg = ProgramaWindow(self, exercicios, clientes)
         if (dlg.exec() == QDialog.Accepted):
             dlg.salva_programa()
 
@@ -66,7 +66,7 @@ class MainWindow(QWidget):
             if(cargo == 1):
                 self.personal_ui.setCurrentUser(user["matricula"], user["senha"])
             else:
-                pass
+                self.cliente_ui.setCurrentUser(user["matricula"], user["senha"])
 
             return True
         return False

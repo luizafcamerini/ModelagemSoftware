@@ -1,37 +1,39 @@
 # import datetime
 from PySide6.QtWidgets import QDialog, QTableWidgetItem
-from PySide6 import QtCore
 from ui_ProgramaWindow import Ui_ProgramaWindow
 from banco import Banco
-from PySide6.QtCore import Signal, Slot
+from PySide6.QtCore import Signal, Slot, Qt
 from CheckBoxTableDialog import CheckboxTableDialog
 
 
 class ProgramaWindow(QDialog, Banco):
     exercicios = []
+    linhas = 0
     current_item: QTableWidgetItem
-    def __init__(self, parent=None, exercicios = None):
+    def __init__(self, parent=None, exercicios = None, clientes = None):
         super().__init__(parent)
         self.exercicios = exercicios
         bd = Banco.get_instance().get_database()
         self.exercicios_col = bd["exercicios"]
         self.treino_col = bd["treinos"]
+        self.programa_col = bd["programas"]
+
         self.ui = Ui_ProgramaWindow()
         self.ui.setupUi(self)
-
-        linhas = 5
+        self.lista_clientes(clientes)
+        linhas = 1
         self.ui.tableWidget.setRowCount(linhas)
-        
-        self.ui.tableWidget.setColumnCount(3)
-        self.ui.tableWidget.setHorizontalHeaderLabels(['Treino 1', 'Treino 2', 'Treino'])
 
         self.ui.cancel_button.clicked.connect(self.reject)
         self.ui.salvar_button.clicked.connect(self.accept)
         self.ui.add_treino.clicked.connect(self.adiciona_treino)
         self.ui.del_treino.clicked.connect(self.deleta_treino)
-        self.ui.add_linha.clicked.connect(self.adiciona_linha)
-        self.ui.del_linha.clicked.connect(self.deleta_linha)
-        
+
+    def lista_clientes(self, clientes):
+        '''Popula combo box de clientes'''
+        for cli in clientes:
+            self.ui.cliente_c_box.addItem(cli["nome"] + cli["sobrenome"] + " - " + cli["matricula"], cli["_id"])
+
     def adicionar_linha_se_necessario(self, row, _):
         '''Pular linha na tabela quando voce adiciona um exercicio'''
         id_item = self.ui.tableWidget.item(row, 0)
@@ -52,9 +54,15 @@ class ProgramaWindow(QDialog, Banco):
             self.ui.tableWidget.setColumnCount(qtd_col+1)
             self.ui.tableWidget.setHorizontalHeaderItem(qtd_col, QTableWidgetItem(nome_col))
             selecionados = dlg.get_selected_items()
+            
+            linhas_selecionados = len(selecionados)
+            if self.linhas < linhas_selecionados:
+                self.linhas = linhas_selecionados
+                self.ui.tableWidget.setRowCount(linhas_selecionados)
+
             for row, item in enumerate(selecionados):
                 nome_item = QTableWidgetItem(item["nome"])
-                nome_item.setData(QtCore.Qt.DisplayRole, item['_id'])
+                nome_item.setData(Qt.UserRole, item['_id'])
                 self.ui.tableWidget.setItem(row, qtd_col, nome_item)
 
 
@@ -62,18 +70,22 @@ class ProgramaWindow(QDialog, Banco):
         self.ui.tableWidget.removeColumn(self.ui.tableWidget.currentColumn())
         print('deleta t')
 
-    def adiciona_linha(self):
-        qtd_rows = self.ui.tableWidget.rowCount()
-        self.ui.tableWidget.setRowCount(qtd_rows+1)
+    # def adiciona_linha(self):
+    #     qtd_rows = self.ui.tableWidget.rowCount()
+    #     self.ui.tableWidget.setRowCount(qtd_rows+1)
 
-    def deleta_linha(self):
-        self.ui.tableWidget.removeRow(self.ui.tableWidget.currentRow())
+    # def deleta_linha(self):
+    #     self.ui.tableWidget.removeRow(self.ui.tableWidget.currentRow())
 
     def salva_programa(self):
-        self.ui.cliente_edit.text()
-        treinos = self.salva_treinos()
-        # Todo: salvar id treino em programa
-        pass
+        cliente = self.ui.cliente_c_box.currentData(Qt.UserRole)
+        if(cliente):
+            programa = {
+                "treinos": self.salva_treinos(),
+                "cliente": str(self.ui.cliente_c_box.currentData(Qt.UserRole))
+            }
+            self.programa_col.insert_one(programa)
+            
 
     def salva_treinos(self):
         treinos = list()
@@ -83,23 +95,17 @@ class ProgramaWindow(QDialog, Banco):
 
         for col in range(columnCount):
             col_info = dict()
-            coluna_nome = self.ui.tableWidget.horizontalHeaderItem(col).text()
+            col_info["nome"] = self.ui.tableWidget.horizontalHeaderItem(col).text()
+            col_info["exercicios"] = list()
 
             for row in range(rowCount):
                 item = self.ui.tableWidget.item(row, col)
                 if item is not None:
-                    col_info[coluna_nome] = item.text()
-                    col_info["exercicio_id"] = str(item.data(QtCore.Qt.DisplayRole))
-                treinos.append(col_info)
+                    col_info["exercicios"].append(str(item.data(Qt.UserRole)))
+            treinos.append(col_info)
 
-        self.treino_col.insert_many(treinos)
-        return treinos
+        insert_treinos = self.treino_col.insert_many(treinos)
+        return list(insert_treinos.inserted_ids)
 
-
-
-
-
-
-    
 
 

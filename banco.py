@@ -17,7 +17,8 @@ class Banco():
     self.exercicios_col = self.bd["treino"]
     self.exercicios_col = self.bd["programa"]
     self.sessoes_col = self.bd["sessoes"]
-    # self.personais_col.insert_one({"nome": "Maria", "sobrenome": "da Silva", "matricula": "00000", "senha": "12345678"})
+    # self.personais_col.insert_one({"nome": "Maria", "sobrenome": "da Silva", "matricula": "00000", "senha": "1234"})
+    # self.clientes_col.insert_one({"nome": "João", "sobrenome": "Carlos", "matricula": "00000", "senha": "1234"})
      
   def get_instance():
     if Banco.__instance is None:

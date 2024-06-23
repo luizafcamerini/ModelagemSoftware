@@ -14,20 +14,7 @@
    <string>MainWindow</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
-   <item row="0" column="1">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="2">
+   <item row="1" column="4">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -79,7 +66,20 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="2">
+   <item row="0" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="2" colspan="3">
     <layout class="QGridLayout" name="gridLayout_8">
      <item row="2" column="0" colspan="4">
       <widget class="QPushButton" name="cadastrar_button">
@@ -101,13 +101,6 @@
        </property>
       </spacer>
      </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="logout_button">
-       <property name="text">
-        <string>logout</string>
-       </property>
-      </widget>
-     </item>
      <item row="3" column="0" colspan="4">
       <widget class="QPushButton" name="configurar_treino_button">
        <property name="text">
@@ -126,19 +119,6 @@
         </item>
        </layout>
       </widget>
-     </item>
-     <item row="1" column="0">
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
      <item row="5" column="0" colspan="4">
       <widget class="QPushButton" name="alterar_treino_button">
@@ -162,6 +142,26 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item row="3" column="0" colspan="4">
+    <spacer name="horizontalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="4">
+    <widget class="QPushButton" name="logout_button">
+     <property name="text">
+      <string>logout</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
