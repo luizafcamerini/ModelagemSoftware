@@ -23,7 +23,7 @@ class PersonalWindow(QWidget, Banco):
         self.ui.setupUi(self)
     
         bd = Banco.get_instance().get_database()
-        clientes = bd["clientes"]
+        self.clientes_col = bd["clientes"]
         self.exercicios_col = bd["exercicios"]
 
         # Connects
@@ -35,6 +35,8 @@ class PersonalWindow(QWidget, Banco):
     # Slots
     @Slot()
     def logoutClicked(self):
+        self.matricula = None
+        self.nome = ""
         self.logout.emit()
 
     @Slot()

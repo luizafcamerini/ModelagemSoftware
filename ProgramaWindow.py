@@ -32,7 +32,7 @@ class ProgramaWindow(QDialog, Banco):
     def lista_clientes(self, clientes):
         '''Popula combo box de clientes'''
         for cli in clientes:
-            self.ui.cliente_c_box.addItem(cli["nome"] + cli["sobrenome"] + " - " + cli["matricula"], cli["_id"])
+            self.ui.cliente_c_box.addItem(cli["nome"] + cli["sobrenome"] + " - " + cli["matricula"], cli["matricula"])
 
     def adicionar_linha_se_necessario(self, row, _):
         '''Pular linha na tabela quando voce adiciona um exercicio'''
@@ -82,7 +82,7 @@ class ProgramaWindow(QDialog, Banco):
         if(cliente):
             programa = {
                 "treinos": self.salva_treinos(),
-                "cliente": str(self.ui.cliente_c_box.currentData(Qt.UserRole))
+                "cliente": cliente
             }
             self.programa_col.insert_one(programa)
             
@@ -101,7 +101,7 @@ class ProgramaWindow(QDialog, Banco):
             for row in range(rowCount):
                 item = self.ui.tableWidget.item(row, col)
                 if item is not None:
-                    col_info["exercicios"].append(str(item.data(Qt.UserRole)))
+                    col_info["exercicios"].append(item.data(Qt.UserRole))
             treinos.append(col_info)
 
         insert_treinos = self.treino_col.insert_many(treinos)

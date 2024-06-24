@@ -67,7 +67,6 @@ class MainWindow(QWidget):
                 self.personal_ui.setCurrentUser(user["matricula"], user["senha"])
             else:
                 self.cliente_ui.setCurrentUser(user["matricula"], user["senha"])
-
             return True
         return False
     

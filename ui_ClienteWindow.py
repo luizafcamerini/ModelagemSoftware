@@ -16,11 +16,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialogButtonBox, QFrame,
-    QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
-    QLabel, QLineEdit, QListWidget, QListWidgetItem,
-    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
-    QStackedWidget, QTabWidget, QTableWidget, QTableWidgetItem,
-    QTextEdit, QWidget)
+    QGridLayout, QGroupBox, QHBoxLayout, QLabel,
+    QLineEdit, QListWidget, QListWidgetItem, QPushButton,
+    QRadioButton, QSizePolicy, QSpacerItem, QStackedWidget,
+    QTabWidget, QTextEdit, QWidget)
 
 class Ui_ClienteWindow(object):
     def setupUi(self, ClienteWindow):
@@ -101,17 +100,12 @@ class Ui_ClienteWindow(object):
         self.page_4.setObjectName(u"page_4")
         self.horizontalLayout_2 = QHBoxLayout(self.page_4)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.groupBox = QGroupBox(self.page_4)
-        self.groupBox.setObjectName(u"groupBox")
-        self.gridLayout_3 = QGridLayout(self.groupBox)
+        self.programa_g_box = QGroupBox(self.page_4)
+        self.programa_g_box.setObjectName(u"programa_g_box")
+        self.gridLayout_3 = QGridLayout(self.programa_g_box)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.tableWidget = QTableWidget(self.groupBox)
-        self.tableWidget.setObjectName(u"tableWidget")
 
-        self.gridLayout_3.addWidget(self.tableWidget, 0, 1, 1, 1)
-
-
-        self.horizontalLayout_2.addWidget(self.groupBox)
+        self.horizontalLayout_2.addWidget(self.programa_g_box)
 
         self.groupBox_2 = QGroupBox(self.page_4)
         self.groupBox_2.setObjectName(u"groupBox_2")
@@ -166,7 +160,7 @@ class Ui_ClienteWindow(object):
         self.label.setText(QCoreApplication.translate("ClienteWindow", u"T\u00edtulo:", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("ClienteWindow", u"Criar Solicita\u00e7\u00e3o", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("ClienteWindow", u"Minhas Solicita\u00e7\u00f5es", None))
-        self.groupBox.setTitle(QCoreApplication.translate("ClienteWindow", u"Meu Programa", None))
+        self.programa_g_box.setTitle(QCoreApplication.translate("ClienteWindow", u"Meu Programa", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("ClienteWindow", u"Exerc\u00edcios da Sess\u00e3o", None))
         self.sessao_button.setText(QCoreApplication.translate("ClienteWindow", u"Iniciar Sess\u00e3o", None))
         self.logout_button.setText(QCoreApplication.translate("ClienteWindow", u"Logout", None))

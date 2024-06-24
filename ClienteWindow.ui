@@ -107,15 +107,11 @@
      <widget class="QWidget" name="page_4">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QGroupBox" name="groupBox">
+        <widget class="QGroupBox" name="programa_g_box">
          <property name="title">
           <string>Meu Programa</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_3">
-          <item row="0" column="1">
-           <widget class="QTableWidget" name="tableWidget"/>
-          </item>
-         </layout>
+         <layout class="QGridLayout" name="gridLayout_3"/>
         </widget>
        </item>
        <item>

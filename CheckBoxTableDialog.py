@@ -15,11 +15,12 @@ class CheckboxTableDialog(QDialog):
         self.tableWidget = QTableWidget(self)
         self.tableWidget.setColumnCount(5)
         self.tableWidget.setHorizontalHeaderLabels(["ID", "Nome", "Descrição", "Ilustração", "Select"])
-        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        # self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         
         self.tableWidget.setRowCount(len(items))
         for row, item in enumerate(items):
             id_item = QTableWidgetItem(str(item["_id"]))
+            id_item.setData(Qt.UserRole, item['_id'])
             id_item.setFlags(id_item.flags() & ~Qt.ItemIsEditable)
 
             nome_item = QTableWidgetItem(item["nome"])
@@ -63,7 +64,7 @@ class CheckboxTableDialog(QDialog):
             checkbox = checkbox_widget.layout().itemAt(0).widget()
             if checkbox.isChecked():
                 item = {
-                    "_id": self.tableWidget.item(row, 0).text(),
+                    "_id": self.tableWidget.item(row, 0).data(Qt.UserRole),
                     "nome": self.tableWidget.item(row, 1).text(),
                     "descricao": self.tableWidget.item(row, 2).text(),
                     "ilustracao": self.tableWidget.item(row, 3).text()
