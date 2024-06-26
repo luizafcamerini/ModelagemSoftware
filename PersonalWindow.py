@@ -29,7 +29,6 @@ class PersonalWindow(QWidget, Banco):
         # Connects
         self.ui.logout_button.clicked.connect(self.logoutClicked)
         self.ui.programa_button.clicked.connect(self.criarProgramaClicked)
-        self.ui.configurar_treino_button.clicked.connect(self.configurarTreinoClicked)
         self.ui.cad_exercicio_button.clicked.connect(self.cadastraExercicioClicked)
 
     # Slots

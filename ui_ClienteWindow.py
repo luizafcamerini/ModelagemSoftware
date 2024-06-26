@@ -16,10 +16,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialogButtonBox, QFrame,
-    QGridLayout, QGroupBox, QHBoxLayout, QLabel,
-    QLineEdit, QListWidget, QListWidgetItem, QPushButton,
-    QRadioButton, QSizePolicy, QSpacerItem, QStackedWidget,
-    QTabWidget, QTextEdit, QWidget)
+    QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
+    QLabel, QLineEdit, QListWidget, QListWidgetItem,
+    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
+    QStackedWidget, QTabWidget, QTableWidget, QTableWidgetItem,
+    QTextEdit, QWidget)
 
 class Ui_ClienteWindow(object):
     def setupUi(self, ClienteWindow):
@@ -28,6 +29,15 @@ class Ui_ClienteWindow(object):
         ClienteWindow.resize(800, 600)
         self.gridLayout_5 = QGridLayout(ClienteWindow)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_5.addItem(self.horizontalSpacer, 1, 0, 1, 1)
+
+        self.logout_button = QPushButton(ClienteWindow)
+        self.logout_button.setObjectName(u"logout_button")
+
+        self.gridLayout_5.addWidget(self.logout_button, 1, 1, 1, 1)
+
         self.stackedWidget = QStackedWidget(ClienteWindow)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.page_3 = QWidget()
@@ -111,36 +121,17 @@ class Ui_ClienteWindow(object):
         self.groupBox_2.setObjectName(u"groupBox_2")
         self.gridLayout_4 = QGridLayout(self.groupBox_2)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.exercicios_sessao_list = QListWidget(self.groupBox_2)
-        self.exercicios_sessao_list.setObjectName(u"exercicios_sessao_list")
+        self.table_widget = QTableWidget(self.groupBox_2)
+        self.table_widget.setObjectName(u"table_widget")
 
-        self.gridLayout_4.addWidget(self.exercicios_sessao_list, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.table_widget, 0, 0, 1, 1)
 
 
         self.horizontalLayout_2.addWidget(self.groupBox_2)
 
-        self.gridLayout_7 = QGridLayout()
-        self.gridLayout_7.setObjectName(u"gridLayout_7")
-        self.sessao_button = QPushButton(self.page_4)
-        self.sessao_button.setObjectName(u"sessao_button")
-
-        self.gridLayout_7.addWidget(self.sessao_button, 0, 0, 1, 1)
-
-        self.logout_button = QPushButton(self.page_4)
-        self.logout_button.setObjectName(u"logout_button")
-
-        self.gridLayout_7.addWidget(self.logout_button, 2, 0, 1, 1)
-
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.gridLayout_7.addItem(self.verticalSpacer, 1, 0, 1, 1)
-
-
-        self.horizontalLayout_2.addLayout(self.gridLayout_7)
-
         self.stackedWidget.addWidget(self.page_4)
 
-        self.gridLayout_5.addWidget(self.stackedWidget, 0, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.stackedWidget, 0, 0, 1, 2)
 
 
         self.retranslateUi(ClienteWindow)
@@ -154,6 +145,7 @@ class Ui_ClienteWindow(object):
 
     def retranslateUi(self, ClienteWindow):
         ClienteWindow.setWindowTitle(QCoreApplication.translate("ClienteWindow", u"MainWindow", None))
+        self.logout_button.setText(QCoreApplication.translate("ClienteWindow", u"Logout", None))
         self.label_2.setText(QCoreApplication.translate("ClienteWindow", u"Descri\u00e7\u00e3o:", None))
         self.exercicio_radiob.setText(QCoreApplication.translate("ClienteWindow", u"Alterar exerc\u00edcio", None))
         self.treino_radiob.setText(QCoreApplication.translate("ClienteWindow", u"Alterar treino", None))
@@ -162,7 +154,5 @@ class Ui_ClienteWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("ClienteWindow", u"Minhas Solicita\u00e7\u00f5es", None))
         self.programa_g_box.setTitle(QCoreApplication.translate("ClienteWindow", u"Meu Programa", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("ClienteWindow", u"Exerc\u00edcios da Sess\u00e3o", None))
-        self.sessao_button.setText(QCoreApplication.translate("ClienteWindow", u"Iniciar Sess\u00e3o", None))
-        self.logout_button.setText(QCoreApplication.translate("ClienteWindow", u"Logout", None))
     # retranslateUi
 

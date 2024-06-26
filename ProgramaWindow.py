@@ -15,6 +15,7 @@ class ProgramaWindow(QDialog, Banco):
 
     def __init__(self, parent=None, exercicios = None, clientes = None):
         super().__init__(parent)
+
         self.exercicios = exercicios
         self.qtd_treinos = 0
         bd = Banco.get_instance().get_database()
@@ -30,23 +31,11 @@ class ProgramaWindow(QDialog, Banco):
         self.ui.cancel_button.clicked.connect(self.reject)
         self.ui.salvar_button.clicked.connect(self.accept)
         self.ui.add_treino.clicked.connect(self.adiciona_treino)
-        self.ui.del_treino.clicked.connect(self.deleta_treino)
         
     def lista_clientes(self, clientes):
         '''Popula combo box de clientes'''
         for cli in clientes:
             self.ui.cliente_c_box.addItem(cli["nome"] + cli["sobrenome"] + " - " + cli["matricula"], cli["matricula"])
-
-    def adicionar_linha_se_necessario(self, row, _):
-        '''Pular linha na tabela quando voce adiciona um exercicio'''
-        id_item = self.ui.tableWidget.item(row, 0)
-        nome_item = self.ui.tableWidget.item(row, 1)
-        desc_item = self.ui.tableWidget.item(row, 2)
-        ilustracao_item = self.ui.tableWidget.item(row, 3)
-
-        if (id_item and nome_item and desc_item and ilustracao_item ):
-            row_count = self.ui.tableWidget.rowCount() + 1
-            self.ui.tableWidget.setRowCount(row_count)
             
     @Slot()
     def adiciona_treino(self):
@@ -88,17 +77,6 @@ class ProgramaWindow(QDialog, Banco):
         prog_layout.addWidget(tb_treino)
         self.tabelas_treino.append({"label": treino_name, "tab": tb_treino})
 
-    def deleta_treino(self):
-        # self.ui.tableWidget.removeColumn(self.ui.tableWidget.currentColumn())
-        print('deleta t')
-
-    # def adiciona_linha(self):
-    #     qtd_rows = self.ui.tableWidget.rowCount()
-    #     self.ui.tableWidget.setRowCount(qtd_rows+1)
-
-    # def deleta_linha(self):
-    #     self.ui.tableWidget.removeRow(self.ui.tableWidget.currentRow())
-
     def salva_programa(self):
         cliente = self.ui.cliente_c_box.currentData(Qt.UserRole)
         if(cliente):
@@ -111,7 +89,6 @@ class ProgramaWindow(QDialog, Banco):
 
     def salva_treinos(self):
         treinos = list()
-        print("salva")
 
         for lista in self.tabelas_treino:
             info_treino = dict()

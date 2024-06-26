@@ -21,9 +21,13 @@ class ExercicioDialog(QDialog, Banco):
         else:
             self.exercicios = exercicios if exercicios else []
 
+        new_item = QTableWidgetItem("")
+        new_item.setFlags(new_item.flags() & ~QtCore.Qt.ItemIsEditable)
+        self.ui.tableWidget.setItem(linhas, 0, new_item)
+
         self.ui.tableWidget.setRowCount(linhas)
-        self.ui.tableWidget.setColumnCount(4)
-        self.ui.tableWidget.setHorizontalHeaderLabels(['_id', 'nome', 'descricao', 'ilustracao'])
+        self.ui.tableWidget.setColumnCount(3)
+        self.ui.tableWidget.setHorizontalHeaderLabels(['_id', 'nome', 'descricao'])
         if exercicios:
             self.lista_exercicios(exercicios)
             
@@ -33,37 +37,36 @@ class ExercicioDialog(QDialog, Banco):
     
     def lista_exercicios(self, exercicios):
         for row, exercicio in enumerate(exercicios):
-            print(exercicio)
             id_item = QTableWidgetItem(str(exercicio['_id']))
             id_item.setFlags(id_item.flags() & ~QtCore.Qt.ItemIsEditable)
             nome_item = QTableWidgetItem(exercicio['nome'])
             descricao_item = QTableWidgetItem(exercicio['descricao'])
-            ilustracao_item = QTableWidgetItem(exercicio['ilustracao'])
             
             self.ui.tableWidget.setItem(row, 0, id_item)
             self.ui.tableWidget.setItem(row, 1, nome_item)
             self.ui.tableWidget.setItem(row, 2, descricao_item)
-            self.ui.tableWidget.setItem(row, 3, ilustracao_item)
             self.exercicios.append({
                 "id": id_item.text(),
                 "nome": nome_item.text(),
                 "descricao": descricao_item.text(),
-                "ilustracao": ilustracao_item.text()
             })
+
     def adicionar_linha_se_necessario(self, row, _):
         '''Pular linha na tabela quando voce adiciona um exercicio'''
         id_item = self.ui.tableWidget.item(row, 0)
         nome_item = self.ui.tableWidget.item(row, 1)
         desc_item = self.ui.tableWidget.item(row, 2)
-        ilustracao_item = self.ui.tableWidget.item(row, 3)
 
-        if (id_item and nome_item and desc_item and ilustracao_item ):
+        if (id_item and nome_item and desc_item ):
             row_count = self.ui.tableWidget.rowCount() + 1
             self.ui.tableWidget.setRowCount(row_count)
+            new_item = QTableWidgetItem("")
+            new_item.setFlags(new_item.flags() & ~QtCore.Qt.ItemIsEditable)
+            self.ui.tableWidget.setItem(row_count, 0, new_item)
+
     
     def salva_alteracoes(self):
         alterados = list()
-        deletados = list()
         adicionados = list()
 
         rowCount = self.ui.tableWidget.rowCount()

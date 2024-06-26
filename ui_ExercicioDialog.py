@@ -24,6 +24,11 @@ class Ui_ExercicioDialog(object):
         if not ExercicioDialog.objectName():
             ExercicioDialog.setObjectName(u"ExercicioDialog")
         ExercicioDialog.resize(636, 497)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(ExercicioDialog.sizePolicy().hasHeightForWidth())
+        ExercicioDialog.setSizePolicy(sizePolicy)
         self.gridLayout_3 = QGridLayout(ExercicioDialog)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_2 = QGridLayout()

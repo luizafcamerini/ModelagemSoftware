@@ -62,43 +62,38 @@ class Ui_MainWindow(object):
         self.loginWidget.setObjectName(u"loginWidget")
         self.formLayout = QFormLayout(self.loginWidget)
         self.formLayout.setObjectName(u"formLayout")
-        self.label = QLabel(self.loginWidget)
-        self.label.setObjectName(u"label")
-
-        self.formLayout.setWidget(0, QFormLayout.SpanningRole, self.label)
-
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.formLayout.setItem(1, QFormLayout.SpanningRole, self.verticalSpacer)
-
         self.cadastroLabel = QLabel(self.loginWidget)
         self.cadastroLabel.setObjectName(u"cadastroLabel")
 
-        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.cadastroLabel)
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.cadastroLabel)
 
         self.cadastroLineEdit = QLineEdit(self.loginWidget)
         self.cadastroLineEdit.setObjectName(u"cadastroLineEdit")
 
-        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.cadastroLineEdit)
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.cadastroLineEdit)
 
         self.senhaLabel = QLabel(self.loginWidget)
         self.senhaLabel.setObjectName(u"senhaLabel")
 
-        self.formLayout.setWidget(3, QFormLayout.LabelRole, self.senhaLabel)
+        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.senhaLabel)
 
         self.senhaLineEdit = QLineEdit(self.loginWidget)
         self.senhaLineEdit.setObjectName(u"senhaLineEdit")
 
-        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.senhaLineEdit)
+        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.senhaLineEdit)
 
         self.entrarPushButton = QPushButton(self.loginWidget)
         self.entrarPushButton.setObjectName(u"entrarPushButton")
 
-        self.formLayout.setWidget(4, QFormLayout.SpanningRole, self.entrarPushButton)
+        self.formLayout.setWidget(3, QFormLayout.SpanningRole, self.entrarPushButton)
 
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.formLayout.setItem(5, QFormLayout.FieldRole, self.verticalSpacer_4)
+        self.formLayout.setItem(4, QFormLayout.FieldRole, self.verticalSpacer_4)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.formLayout.setItem(0, QFormLayout.SpanningRole, self.verticalSpacer)
 
 
         self.gridLayout.addWidget(self.loginWidget, 0, 0, 1, 1)
@@ -126,7 +121,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.personalRadioButton.setText(QCoreApplication.translate("MainWindow", u"Personal", None))
         self.alunoRadioButton.setText(QCoreApplication.translate("MainWindow", u"Aluno", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Nome do Aplicativo", None))
         self.cadastroLabel.setText(QCoreApplication.translate("MainWindow", u"Cadastro: ", None))
         self.senhaLabel.setText(QCoreApplication.translate("MainWindow", u"Senha:", None))
         self.entrarPushButton.setText(QCoreApplication.translate("MainWindow", u"Entrar", None))
