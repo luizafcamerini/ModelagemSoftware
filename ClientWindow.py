@@ -5,12 +5,13 @@ from PySide6.QtWidgets import (QWidget, QTableWidget, QTableWidgetItem,
 from PySide6.QtCore import Signal, Slot, Qt
 from PySide6.QtGui import QFont, QColor
 from banco import Banco
+from datetime import datetime
 
 class ClienteWindow(QWidget):
     matricula = None
     nome = ""
+    sessao_id = None
     tabelas_treino = list()
-
     logout = Signal()
     sessao = Signal()
     solicitacao = Signal()
@@ -22,6 +23,7 @@ class ClienteWindow(QWidget):
         self.programa_col = bd["programas"]
         self.treino_col = bd["treinos"]
         self.exercicio_col = bd["exercicios"]
+        self.sessao_col = bd["sessao"]
 
         self.ui = Ui_ClienteWindow()
         self.ui.setupUi(self)
@@ -56,6 +58,10 @@ class ClienteWindow(QWidget):
         self.matricula = matricula
         self.nome = nome
         self.lista_programa()        
+        self.sessao_id = self.sessao_col.insert_one({
+            "sessao_init": datetime.now(),
+            "exercicios": []
+        }).inserted_id
 
 
     def lista_programa(self):
@@ -77,6 +83,7 @@ class ClienteWindow(QWidget):
             item = self.exercicio_col.find_one({"_id": exec["id"]})
             if item:
                 nome_item = QTableWidgetItem(item["nome"])
+                nome_item.setData(Qt.UserRole, exec["id"])
                 serie_item = QTableWidgetItem(exec["series"])
                 rep_item = QTableWidgetItem(exec["repeticoes"])
                 peso_item = QTableWidgetItem(exec["peso"])
@@ -126,6 +133,8 @@ class ClienteWindow(QWidget):
         tb_sessao = self.ui.table_widget
         row_sessao = tb_sessao.rowCount() + 1
         tb_sessao.setRowCount(row_sessao)
+        exec_info = dict()
+
         for i in range(5):
             item = tab.item(row, i + 1)
             item.setFont(font)
@@ -134,8 +143,24 @@ class ClienteWindow(QWidget):
                 new_item = item.clone()
                 new_item.setFlags(item.flags() | Qt.ItemIsEditable | Qt.ItemIsSelectable | Qt.ItemIsEnabled)
                 tb_sessao.setItem(row_sessao - 1, i, new_item)
+                col_name = ''
                 if i==0:
-                    new_item.setFlags(item.flags() & ~Qt.ItemIsEditable)
+                    col_name = "nome"
+                    exec_info["id"] = new_item.data(Qt.UserRole)
+                elif i==1:
+                    col_name = "series"
+                elif i == 2:
+                    col_name = "repeticoes"
+                elif i == 3:
+                    col_name = "peso"
+                if col_name != '':
+                    exec_info[col_name] = new_item.text()
+                print(i,"+", new_item.text())
+        self.sessao_col.update_one(
+            {'_id': self.sessao_id},
+            { '$push': { "exercicios": exec_info }}
+        )
+
 
         
 
