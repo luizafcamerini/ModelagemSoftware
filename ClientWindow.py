@@ -146,6 +146,8 @@ class ClienteWindow(QWidget):
             if i != 5:
                 new_item = item.clone()
                 new_item.setFlags(item.flags() | Qt.ItemIsEditable | Qt.ItemIsSelectable | Qt.ItemIsEnabled)
+                if i == 0:
+                    new_item.setFlags(item.flags() & ~Qt.ItemIsEditable)
                 tb_sessao.setItem(row_sessao - 1, i, new_item)
                 col_name = ''
                 if i==0:
@@ -159,7 +161,6 @@ class ClienteWindow(QWidget):
                     col_name = "peso"
                 if col_name != '':
                     exec_info[col_name] = new_item.text()
-                print(i,"+", new_item.text())
         self.sessao_col.update_one(
             {'_id': self.sessao_id},
             { '$push': { "exercicios": exec_info }}

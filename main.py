@@ -12,7 +12,7 @@ def ui_convert():
             
             result = subprocess.run(command1, check=True, shell=True, stdout=subprocess.PIPE)
             result = subprocess.run(command2, check=True, shell=True, stdout=subprocess.PIPE)
-            print(f"Janela {name} atualizada")
+            #print(f"Janela {name} atualizada")
 
         except subprocess.CalledProcessError as e:
             print(f"Erro ao executar o comando: {e}\n")
