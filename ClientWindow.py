@@ -43,6 +43,7 @@ class ClienteWindow(QWidget):
         self.matricula = None
         self.nome = ""
         self.remove_tabelas_de_treino()
+        self.limpa_sessao()
         self.logout.emit()
     
     @Slot()
@@ -200,3 +201,7 @@ class ClienteWindow(QWidget):
                 prog_layout.removeWidget(label)
                 tabela.deleteLater() 
                 label.deleteLater()
+    
+    def limpa_sessao(self):
+        self.ui.table_widget.clearContents()
+        self.ui.table_widget.setRowCount(0)
