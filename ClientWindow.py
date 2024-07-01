@@ -39,6 +39,7 @@ class ClienteWindow(QWidget):
 
     @Slot()
     def logoutClicked(self):
+        self.salva_sessao()
         self.matricula = None
         self.nome = ""
         self.remove_tabelas_de_treino()
@@ -160,12 +161,33 @@ class ClienteWindow(QWidget):
                 print(i,"+", new_item.text())
         self.sessao_col.update_one(
             {'_id': self.sessao_id},
-            {'cliente': self.matricula},
             { '$push': { "exercicios": exec_info }}
-        )
+        )  
 
-
-        
+    def salva_sessao(self):
+        rows = self.ui.table_widget.rowCount()
+        exercicios = list()
+        for i in range(rows):
+            exec_info = dict()
+            for j in range(4):
+                item = self.ui.table_widget.item(i, j)
+                col_name = ''
+                if j==0:
+                    col_name = "nome"
+                    exec_info["id"] = item.data(Qt.UserRole)
+                elif j==1:
+                    col_name = "series"
+                elif j == 2:
+                    col_name = "repeticoes"
+                elif j == 3:
+                    col_name = "peso"
+                if col_name != '':
+                    exec_info[col_name] = item.text()
+            exercicios.append(exec_info)
+        self.sessao_col.update_one(
+                {'_id': self.sessao_id},
+                { '$set': { "exercicios": exercicios }}
+            )  
 
     def remove_tabelas_de_treino(self):
         prog_layout = self.ui.programa_g_box.layout()
