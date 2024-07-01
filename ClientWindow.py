@@ -12,6 +12,7 @@ class ClienteWindow(QWidget):
     nome = ""
     sessao_id = None
     tabelas_treino = list()
+    labels = list()
     logout = Signal()
     sessao = Signal()
     solicitacao = Signal()
@@ -117,6 +118,7 @@ class ClienteWindow(QWidget):
 
 
         label = QLabel(treino["nome"])
+        self.labels.append(label)
         prog_layout.addWidget(label)
         prog_layout.addWidget(tb_treino)
         self.tabelas_treino.append(tb_treino)
@@ -158,6 +160,7 @@ class ClienteWindow(QWidget):
                 print(i,"+", new_item.text())
         self.sessao_col.update_one(
             {'_id': self.sessao_id},
+            {'cliente': self.matricula},
             { '$push': { "exercicios": exec_info }}
         )
 
@@ -170,5 +173,8 @@ class ClienteWindow(QWidget):
         if prog_layout is not None:
             while self.tabelas_treino:
                 tabela = self.tabelas_treino.pop()
+                label = self.labels.pop()
                 prog_layout.removeWidget(tabela)
+                prog_layout.removeWidget(label)
                 tabela.deleteLater() 
+                label.deleteLater()
